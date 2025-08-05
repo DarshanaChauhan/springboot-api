@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Employee</title>
+</head>
+<body>
+<h2>Add New Employee</h2>
+<form method="post" action="/api/emp">
+    ID: <input type="number" name="id" /><br/>
+    Name: <input type="text" name="name" /><br/>
+    Salary: <input type="number" name="salary" /><br/>
+    <button type="submit">Add Employee</button>
+</form>
+
+<!--<p th:if="${param.success}">Employee added successfully!</p>-->
+
+</body>
+</html>
