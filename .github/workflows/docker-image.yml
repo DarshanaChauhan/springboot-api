@@ -24,10 +24,9 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          cd deutsche-springboot-demo
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/deutsche-springboot-demo:latest .
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/deutsche-springboot-demo:latest \
+            -f deutsche-springboot-demo/Dockerfile deutsche-springboot-demo
 
       - name: Push Docker Image to Docker Hub
         run: |
-          cd deutsche-springboot-demo
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/deutsche-springboot-demo:latest
