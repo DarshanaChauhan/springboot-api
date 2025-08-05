@@ -23,6 +23,9 @@ jobs:
       - name: Build with Maven
         run: mvn clean package
 
+      - name: Build with Maven (skip tests completely)
+        run: mvn clean package -Dmaven.test.skip=true
+
       - name: Log in to Docker Hub using CLI
         run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
 
