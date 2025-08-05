@@ -6,7 +6,8 @@
  WORKDIR /app
 
 #3Copy yhe built JAR file into the container
- COPY target/violetApple-docker.jar app.jar
+COPY target/deutsche-springboot-demo-0.0.1-SNAPSHOT.jar app.jar
+
 
 #4Expose the applicaction port
  EXPOSE 8080
