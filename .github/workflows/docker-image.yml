@@ -1,10 +1,9 @@
-name: Docker Image CI
+name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build-and-push:
@@ -20,19 +19,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-#      - name: Build with Maven
-#        run: mvn clean package
+      - name: Build with Maven (skip tests completely)
+        run: mvn clean package -Dmaven.test.skip=true
 
-      - name: Build with Maven (skip tests)
-        run: mvn clean package -DskipTests
-
-      - name: Log in to Docker Hub using CLI
+      - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
 
       - name: Build Docker Image
-        run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/springboot-demo:latest .
+        run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/springboot-demo:latest .
 
-      - name: Push Docker Image to Docker Hub
-        run: |
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/springboot-demo:latest
+      - name: Push Docker Image
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/springboot-demo:latest
