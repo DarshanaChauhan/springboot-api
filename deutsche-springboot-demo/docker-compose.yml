@@ -13,7 +13,7 @@ services:
       - db_data:/var/lib/mysql
 
   app:
-    image: DarshanaChauhan/springboot-api/deutsche-springboot-demo:latest
+    image: DarshanaChauhan/deutsche-springboot-demo:latest
     depends_on:
       - db
     ports:
