@@ -26,6 +26,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: .                      # root context
+          file: ./Dockerfile             # Dockerfile path
           push: true
-          tags: yourdockerhubusername/your-image-name:latest, yourdockerhubusername/your-image-name:${{ github.sha }}
+          tags: darshanachauhan/springboot-api:latest
