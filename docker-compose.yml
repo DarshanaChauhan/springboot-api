@@ -13,11 +13,11 @@ services:
       - db_data:/var/lib/mysql
 
   app:
-    image: DarshanaChauhan/deutsche-springboot-demo:latest
+    image: darshanachauhan/deutsche-springboot-demo:latest
     depends_on:
       - db
     ports:
-      - "8090:8090"
+      - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/deutsche
       SPRING_DATASOURCE_USERNAME: root
